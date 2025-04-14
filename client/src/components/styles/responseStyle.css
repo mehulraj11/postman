@@ -1,0 +1,17 @@
+.heroResponse {
+  padding: 1rem;
+  border-top: 1px solid gray;
+}
+.heroResponseFirstChild {
+  display: flex;
+}
+.responseButton {
+  margin-left: 10px;
+  margin-right: 20px;
+  text-align: center;
+  background-color: none;
+  border: none;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}

@@ -1,13 +1,14 @@
-import { useState } from "react";
 import "./App.css";
-import { Response } from "./Response";
+import { useState } from "react";
+import { Response } from "./components/Response";
+import { APICall } from "./components/APICall";
 
 function App() {
   const [URL, setURL] = useState("");
   const [method, setMethod] = useState("GET");
   const [responseData, setResponseData] = useState(null);
 
-  const API = "http://localhost:1000/test-api";
+  const API = "http://localhost:2000/test-api";
 
   const postData = async () => {
     try {
@@ -19,38 +20,27 @@ function App() {
         body: JSON.stringify({ url: URL, method }),
       });
       const data = await response.json();
-      console.log(data.data);
 
-      setResponseData(data.data);
+      setResponseData(data);
     } catch (error) {
-      setResponseData({ error: "Failed to fetch" });
+      setResponseData(error, "Failed to fetch data");
     }
   };
 
   const handleURLClick = () => {
     postData();
   };
-
   return (
-    <>
-      <select value={method} onChange={(e) => setMethod(e.target.value)}>
-        <option value="GET">GET</option>
-        <option value="POST">POST</option>
-        <option value="PUT">PUT</option>
-        <option value="PATCH">PATCH</option>
-        <option value="DELETE">DELETE</option>
-      </select>
-
-      <input
-        type="text"
-        value={URL}
-        onChange={(e) => setURL(e.target.value)}
-        placeholder="Enter API URL"
+    <div className="hero">
+      <APICall
+        method={method}
+        setMethod={setMethod}
+        URL={URL}
+        setURL={setURL}
+        handleURLClick={handleURLClick}
       />
-
-      <button onClick={handleURLClick}>Send</button>
       <Response data={responseData} />
-    </>
+    </div>
   );
 }
 

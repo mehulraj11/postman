@@ -14,18 +14,20 @@ server.use(express.json())
 server.post("/test-api", async (req, res) => {
     const { url, method } = req.body;
 
-    if (!url || method.toUpperCase() !== "GET") {
+    if (!url && method.toUpperCase() !== "GET") {
         return res.status(400).json({ error: "Only GET method is supported for now." });
     }
 
     try {
         const response = await axios.get(url);
 
-        res.json({
+        const value = res.json({
             status: response.status,
             headers: response.headers,
             data: response.data,
         });
+        console.log(value);
+
     } catch (error) {
         res.status(500).json({
             error: "Failed to fetch data",
@@ -35,6 +37,6 @@ server.post("/test-api", async (req, res) => {
     }
 });
 
-server.listen(1000, () => {
+server.listen(2000, () => {
     console.log("running");
 });

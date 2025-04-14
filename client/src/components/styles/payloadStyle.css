@@ -1,0 +1,24 @@
+.payloadToggler {
+  display: flex;
+  list-style: none;
+}
+.payloadToggler > li {
+  padding: 0.5rem 1rem;
+  border-right: 1px solid gray;
+  cursor: pointer;
+}
+.headerTable {
+  display: flex;
+}
+.headerTable > div {
+  border: 1px solid gray;
+  width: 200px;
+}
+pre {
+  color: yellow;
+  max-height: 300px;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

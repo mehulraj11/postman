@@ -1,0 +1,27 @@
+.apiInput {
+  font-size: 1rem;
+  width: 80%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: none;
+  border-radius: 10px;
+}
+.apiButton {
+  margin-left: 10px;
+  cursor: pointer;
+  text-align: center;
+  background-color: rgba(10, 10, 189, 0.899);
+  width: 5%;
+  border: none;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.apiSelect {
+  background-color: silver;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 1rem;
+}
