@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./styles/payloadStyle.css";
 
 export const Payload = ({ data }) => {
+  if (!data) return null; // <--- Fixes the crash if data is undefined
+
   const slicedObject = Object.entries(data).slice(2);
   const payload = Object.fromEntries(slicedObject);
 
@@ -12,8 +14,7 @@ export const Payload = ({ data }) => {
   );
 
   const headerPayload = Object.fromEntries(filteredEntries);
-
-  const headerEntries = Object.entries(headerPayload.headers);
+  const headerEntries = Object.entries(headerPayload.headers || {}); // Safe fallback
 
   const render = headerEntries.map(([key, value], index) => {
     return (

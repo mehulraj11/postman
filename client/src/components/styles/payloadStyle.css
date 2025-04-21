@@ -3,6 +3,7 @@
   list-style: none;
 }
 .payloadToggler > li {
+  font-size: 0.8rem;
   padding: 0.5rem 1rem;
   border-right: 1px solid gray;
   cursor: pointer;
@@ -16,9 +17,9 @@
 }
 pre {
   color: yellow;
-  max-height: 300px;
+  max-height: 200px;
   overflow: auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* padding: 1rem; */
+  border: 1px solid gray;
+  /* border-radius: 5px; */
 }

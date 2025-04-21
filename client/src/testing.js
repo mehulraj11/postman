@@ -19,4 +19,8 @@ const data = {
 const sliced = Object.entries(data).slice(2);
 // console.log(sliced);
 const slicedObject = Object.fromEntries(sliced);
-console.log(slicedObject);
+// console.log(slicedObject);
+
+const url = "https://www.api.com   ";
+console.log(url.length);
+console.log(url.trim().length);
