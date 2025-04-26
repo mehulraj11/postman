@@ -22,7 +22,10 @@ function App() {
         body: JSON.stringify({
           url: URL,
           method,
-          jsonInput: method === "POST" ? JSON.parse(jsonInput) : undefined, // convert stringified JSON into object
+          jsonInput:
+            method === "POST" || method === "PATCH" || method === "PUT"
+              ? JSON.parse(jsonInput)
+              : undefined,
         }),
       });
       const data = await response.json();

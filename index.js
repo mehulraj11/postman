@@ -3,7 +3,6 @@ import cors from "cors";
 import morgan from "morgan";
 import axios from "axios";
 
-import apiRoute from "./routes/apiRoute.js";
 
 const server = express();
 
@@ -37,7 +36,7 @@ server.post("/test-api", async (req, res) => {
         case "POST":
             if (url) {
                 try {
-                    const response = await axios.post(url, req.body.jsonInput);
+                    const response = await axios.post(url, jsonInput);
                     res.json({
                         status: response.status,
                         headers: response.headers,
@@ -70,24 +69,43 @@ server.post("/test-api", async (req, res) => {
                 }
             }
             break;
-        // case "PUT":
-        //     if (url) {
-        //         try {
+        case "PUT":
+            if (url) {
+                try {
+                    const response = await axios.put(url, jsonInput);
+                    res.json({
+                        status: response.status,
+                        headers: response.headers,
+                        data: response.data
+                    });
+                } catch (error) {
+                    res.status(500).json({
+                        error: "Failed to put data",
+                        message: error.message,
+                        details: error.response?.data || null
+                    });
+                }
+            }
+            break;
 
-        //         } catch (error) {
-
-        //         }
-        //     }
-        //     break;
-        // case "PATCH":
-        //     if (url) {
-        //         try {
-
-        //         } catch (error) {
-
-        //         }
-        //     }
-        //     break;
+        case "PATCH":
+            if (url) {
+                try {
+                    const response = await axios.patch(url, jsonInput);
+                    res.json({
+                        status: response.status,
+                        headers: response.headers,
+                        data: response.data
+                    })
+                } catch (error) {
+                    res.status(500).json({
+                        error: "failed to patcch the data",
+                        message: error.message,
+                        details: error.response?.data || null
+                    })
+                }
+            }
+            break;
 
         default:
             res.status(400).json({ error: "Unsupported HTTP method" });
